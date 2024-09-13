@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ecstatic": "^4.1.4",
+    "pug": "^3.0.3"
+  },
+  "scripts": {
+    "validate": "html-validator dist"
+  },
+  "devDependencies": {
+    "w3c-html-validator": "^1.8.2"
+  }
+}
