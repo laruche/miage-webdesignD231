@@ -8,6 +8,7 @@ require('dotenv').config();
 
 const srcFolder = path.join(__dirname, 'src');
 const outputFolder = process.env.OUTPUT_FOLDER || path.join(__dirname, 'dist');
+const baseURL = process.env.BASE_URL || '';
 
 // Function to generate HTML from Pug template
 function generateHTML(templatePath, outputPath) {
@@ -32,10 +33,10 @@ function generateHTML(templatePath, outputPath) {
   if(fs.existsSync(dataPath))
   {
     let data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-    data = {menu: menu, ...data};
+    data = {menu: menu, baseURL:baseURL, ...data};
     html = compiledFunction(data);
   } else {
-    html = compiledFunction({ menu: menu });
+    html = compiledFunction({ menu: menu, baseURL:baseURL });
   }
   // write HTML file
   fs.writeFileSync(outputPath, html);
