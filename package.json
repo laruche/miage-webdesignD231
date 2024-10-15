@@ -5,9 +5,11 @@
     "pug": "^3.0.3"
   },
   "scripts": {
-    "validate": "html-validator dist"
+    "validate": "html-validator dist",
+    "validate_css": "css-validator --warning 0 ./css/*.css "
   },
   "devDependencies": {
-    "w3c-html-validator": "^1.8.2"
+    "w3c-css-validator": "^1.3.2",
+    "css-validator": "^0.11.0"
   }
 }

@@ -1,0 +1,129 @@
+body {
+  display: block;
+  min-height: auto;
+  font-size: 12pt;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #000;
+}
+
+a {
+  color: #000;
+  text-decoration: underline;
+}
+
+a::after {
+  content: " (" attr(href) ")";
+}
+
+#footer,
+nav,
+.asides {
+  display: none;
+}
+
+.container {
+  display: block;
+  padding: 0;
+  background-color: #fff;
+}
+
+article {
+  flex: none;
+  padding: 0;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+article h1 {
+  margin: 1rem 0;
+  text-align: left;
+  color: #000;
+}
+
+article header,
+article footer {
+  display: none;
+}
+
+article section {
+  display: block;
+  page-break-inside: avoid;
+}
+
+article section h2,
+article section h3,
+article section h4 {
+  padding: 0;
+  margin: 0 0 1rem;
+  color: #000;
+}
+
+article section p {
+  margin: 0 0 1rem;
+}
+
+figure,
+aside figure {
+  max-width: 100%;
+  height: auto;
+  page-break-inside: avoid;
+}
+
+figure img,
+aside img {
+  width: 60%;
+  height: auto;
+}
+
+aside {
+  display: none;
+}
+
+aside dl {
+  display: block;
+}
+
+aside dt,
+aside dd {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+aside h4,
+aside h5 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+  color: #000;
+}
+
+aside.extLinks ul {
+  display: block;
+}
+
+aside.extLinks ul li {
+  margin: 0 0 0.5rem;
+}
+
+aside.extLinks ul li a {
+  color: #000;
+  background-color: transparent;
+  padding: 0;
+  font-size: 1rem;
+  border-radius: 0;
+  display: inline;
+}
+
+aside.extLinks ul li a:hover {
+  background-color: transparent;
+  color: #000;
+  text-decoration: underline;
+}
