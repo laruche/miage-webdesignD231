@@ -352,6 +352,11 @@ aside.extLinks ul li a:hover {
 
   article {
     flex: 100%;
+    padding: 0;
+  }
+
+  article h1 {
+    margin: 1rem;
   }
 
   article section {
