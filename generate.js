@@ -3,10 +3,12 @@ const path = require('path');
 const pug = require('pug');
 const http = require('http');
 const ecstatic = require('ecstatic');
+const less = require('less');
 
 require('dotenv').config();
 
 const srcFolder = path.join(__dirname, 'src');
+const lessSrcFolder = path.join(__dirname, 'less');
 const outputFolder = process.env.OUTPUT_FOLDER || path.join(__dirname, 'dist');
 const baseURL = process.env.BASE_URL || '';
 
@@ -43,6 +45,40 @@ function generateHTML(templatePath, outputPath) {
   console.log(`Generated HTML file: ${outputPath}`);
 }
 
+//Function to generate CSS files form Less files in the src folder
+function generateCSS(lessFile, outputPath) {
+  console.log(`Generating CSS file from Less file: ${lessFile}`);
+  // check if is Less file
+  if (!lessFile.endsWith('.less')) {
+    return;
+  }
+  
+  const lessContent = fs.readFileSync(lessFile, 'utf8');
+  less.render(lessContent, (error, output) => {
+    if (error) {
+      console.error(error);
+      return;
+    }
+    fs.writeFileSync(outputPath, output.css);
+    console.log(`Generated CSS file: ${outputPath}`);
+  });
+}
+
+// Generate CSS files
+function generateCSSFiles() {
+  fs.readdirSync(lessSrcFolder).forEach((file) => {
+    // on ne prend que les fichier style.less et print.less
+    if(file !== 'style.less' && file !== 'print.less')
+    {
+      return;
+    }
+    const lessFile = path.join(lessSrcFolder, file);
+    const outputPath = path.join(outputFolder, 'assets', 'css', `${path.parse(file).name}.css`);
+    generateCSS(lessFile, outputPath);
+  });
+}
+
+
 // Function to generate HTML files from Pug templates in the src folder
 function generateHTMLFiles() {
   fs.readdirSync(srcFolder).forEach((file) => {
@@ -55,6 +91,9 @@ function generateHTMLFiles() {
 
 // Generate HTML files
 generateHTMLFiles();
+// Generate CSS files
+generateCSSFiles();
+
 
 // Watch for changes in the src folder and regenerate HTML files
 if (process.env.WATCH_MODE === 'true') {
@@ -63,6 +102,13 @@ if (process.env.WATCH_MODE === 'true') {
       generateHTMLFiles();
     }
   });
+
+  fs.watch(lessSrcFolder, { recursive: true }, (eventType, filename) => {
+    if (eventType === 'change') {
+      generateCSSFiles();
+    }
+  });
+
   console.log('Watching for changes in the src folder...');
 
   // create http server to serve the generated html files
