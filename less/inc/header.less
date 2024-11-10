@@ -1,0 +1,86 @@
+@import "./less/inc/variables";
+
+header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  background-color: @background_WhiteM;
+  width: 100%;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 197px;
+    background: url(../img/logoBisca.webp) no-repeat center center;
+    margin: 0 auto;
+  }
+}
+
+nav {
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+
+    @media @max768 {
+      display: block;
+      text-align: center;
+    }
+
+    li {
+      margin: 0 2rem;
+
+      @media @max1024 {
+        margin: 0 1rem;
+      }
+
+      @media @max768 {
+        margin: 0.5rem 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: @black;
+        font-size: 24px;
+        font-weight: 400;
+        position: relative;
+        text-transform: uppercase;
+
+        &:hover {
+          color: @mediumGreen;
+          text-decoration: underline;
+        }
+
+        @media @max1024 {
+          font-size: 18px;
+        }
+
+        @media @max768 {
+          text-decoration: none;
+          color: @white;
+          background-color: @background_lightGreen;
+          text-decoration: none;
+          padding: 10px 20px;
+          font-size: 20px;
+          border-radius: 4px;
+          display: block;
+
+          &:hover {
+            background-color: @background_darkGreen;
+            color: @white;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}

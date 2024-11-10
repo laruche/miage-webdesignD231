@@ -1,0 +1,51 @@
+@import "./less/inc/variables";
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	min-height: 100vh;
+	font-family: @font_family_1;
+}
+h1 {
+	font-size: 2.5rem;
+	margin-bottom: 1rem;
+}
+h2 {
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+}
+h3 {
+	font-size: 1.25rem;
+	margin-bottom: 1rem;
+}
+h4 {
+	font-size: 1rem;
+	margin-bottom: 1rem;
+}
+a {
+	color: @lightGreen;
+	text-decoration: none;
+	&:hover {
+		color: @darkGreen;
+		text-decoration: underline;
+	}
+}
+
+
+figure {
+	max-width: 80%;
+	height: auto;
+	text-align: center;
+	img {
+		width: 100%;
+		height: auto;
+	}
+	figcaption {
+		font-size: 0.8rem;
+		color: @gray;
+		text-align: center;
+	}
+}
